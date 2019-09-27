@@ -12,15 +12,15 @@ namespace SimpleAPI.Models
     {
         [Key, Required, Column( "id")]
         public int Id { get; set; }
-        [Column(  "cpf")]
+        [Required, Column(  "cpf")]
         public string Cpf { get; set; }
-        [Column( "fullname")]
+        [Required, Column( "fullname")]
         public string Fullname { get; set; }
-        [Column( "emailaddress")]
+        [Required, Column( "emailaddress")]
         public string Emailaddress { get; set; }
-        [Column( "datanascimento")]
+        [Required, Column( "datanascimento")]
         public string Datanascimento { get; set; }
-        [Column("password")]
+        [Required, Column("password")]
         public string password { get; set; }
     }
 }
