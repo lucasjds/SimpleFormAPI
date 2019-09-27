@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace SimpleAPI.Models
 {
+    [Table("usuario")]
     public class Usuario
     {
-        [Key, Required, Display(Name = "id")]
+        [Key, Required, Column( "id")]
         public int Id { get; set; }
-        [Display(Name = "cpf")]
+        [Column(  "cpf")]
         public string Cpf { get; set; }
-        [Display(Name = "fullname")]
+        [Column( "fullname")]
         public string Fullname { get; set; }
-        [Display(Name = "emailaddress")]
+        [Column( "emailaddress")]
         public string Emailaddress { get; set; }
-        [Display(Name = "datanascimento")]
+        [Column( "datanascimento")]
         public string Datanascimento { get; set; }
     }
 }
