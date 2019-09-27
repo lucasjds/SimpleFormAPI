@@ -29,10 +29,7 @@ namespace SimpleAPI.Controllers
         {
             Usuario usuario = db.Usuarios.Find(id);
             if (usuario == null)
-            {
                 return NotFound();
-            }
-
             return Ok(usuario);
         }
 
@@ -40,34 +37,13 @@ namespace SimpleAPI.Controllers
         public IHttpActionResult PutUsuario(int id, Usuario usuario)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-
-            if (id != usuario.Id)
-            {
-                return BadRequest();
-            }
-
             if (!Validacoes.IsValidEmail(usuario.Emailaddress))
-            {
-                return BadRequest("Email is invalid");
-            }
-
+                return BadRequest(Validacoes.EmailNotValid);
             if ((!Validacoes.IsCPFValid(usuario.Cpf)))
-            {
-                return BadRequest("CPF is invalid");
-            }
-
-            if(!Validacoes.IsPasswordValid(usuario.password)){
-                return BadRequest("Password is invalid");
-            }
-
+                return BadRequest(Validacoes.CPFNotValid);
             if (!Validacoes.IsPasswordValid(usuario.password))
-            {
-                return BadRequest("Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ");
-            }
-
+                return BadRequest(Validacoes.PasswordNotValid);
 
             db.Entry(usuario).State = EntityState.Modified;
 
@@ -78,13 +54,9 @@ namespace SimpleAPI.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!UsuarioExists(id))
-                {
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -95,28 +67,15 @@ namespace SimpleAPI.Controllers
         public IHttpActionResult PostUsuario(Usuario usuario)
         {
             if (!ModelState.IsValid )
-            {
                 return BadRequest(ModelState);
-            }
-
             if (!Validacoes.IsValidEmail(usuario.Emailaddress))
-            {
-                return BadRequest("Email is invalid"); 
-            }
-
+                return BadRequest(Validacoes.EmailNotValid); 
             if ((!Validacoes.IsCPFValid(usuario.Cpf)))
-            {
-                return BadRequest("CPF is invalid"); 
-            }
-
+                return BadRequest(Validacoes.CPFNotValid); 
             if (!Validacoes.IsPasswordValid(usuario.password))
-            {
-                return BadRequest("Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ");
-            }
-
+                return BadRequest(Validacoes.PasswordNotValid);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
-
             return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
         }
 
@@ -126,10 +85,7 @@ namespace SimpleAPI.Controllers
         {
             Usuario usuario = db.Usuarios.Find(id);
             if (usuario == null)
-            {
                 return NotFound();
-            }
-
             db.Usuarios.Remove(usuario);
             db.SaveChanges();
 
@@ -139,9 +95,7 @@ namespace SimpleAPI.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 db.Dispose();
-            }
             base.Dispose(disposing);
         }
 

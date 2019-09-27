@@ -9,6 +9,9 @@ namespace SimpleAPI.Utils
 {
     public static class Validacoes
     {
+        public static string EmailNotValid = "Email is invalid";
+        public static string CPFNotValid = "CPF is invalid";
+        public static string PasswordNotValid = "Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ";
         public static bool IsValidEmail(string email)
         {
             try
