@@ -44,10 +44,30 @@ namespace SimpleAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.Id || !Validacoes.IsValidEmail(usuario.Emailaddress))
+            if (id != usuario.Id)
             {
                 return BadRequest();
             }
+
+            if (!Validacoes.IsValidEmail(usuario.Emailaddress))
+            {
+                return BadRequest("Email is invalid");
+            }
+
+            if ((!Validacoes.IsCPFValid(usuario.Cpf)))
+            {
+                return BadRequest("CPF is invalid");
+            }
+
+            if(!Validacoes.IsPasswordValid(usuario.password)){
+                return BadRequest("Password is invalid");
+            }
+
+            if (!Validacoes.IsPasswordValid(usuario.password))
+            {
+                return BadRequest("Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ");
+            }
+
 
             db.Entry(usuario).State = EntityState.Modified;
 
@@ -84,9 +104,14 @@ namespace SimpleAPI.Controllers
                 return BadRequest("Email is invalid"); 
             }
 
-            if ((!Validacoes.IsValidCPF(usuario.Cpf)))
+            if ((!Validacoes.IsCPFValid(usuario.Cpf)))
             {
                 return BadRequest("CPF is invalid"); 
+            }
+
+            if (!Validacoes.IsPasswordValid(usuario.password))
+            {
+                return BadRequest("Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ");
             }
 
             db.Usuarios.Add(usuario);

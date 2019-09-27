@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SimpleAPI.Utils
@@ -21,7 +22,7 @@ namespace SimpleAPI.Utils
             }
         }
 
-        public static bool IsValidCPF(string cpf)
+        public static bool IsCPFValid(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -55,6 +56,19 @@ namespace SimpleAPI.Utils
                 resto = 11 - resto;
             digito = digito + resto.ToString();
             return cpf.EndsWith(digito);
+        }
+
+        public static bool IsPasswordValid(string password){
+
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+            if (!hasNumber.IsMatch(password) 
+                || password.Length < 4 || password.Length > 10 || 
+                !hasUpperChar.IsMatch(password) || 
+                !hasSymbols.IsMatch(password))
+                return false;
+            return true;
         }
     }
 }
