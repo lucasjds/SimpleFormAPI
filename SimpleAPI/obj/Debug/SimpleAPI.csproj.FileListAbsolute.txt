@@ -46,3 +46,4 @@ C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\Swashbuc
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Cors.dll
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Http.Cors.dll
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Http.Cors.xml
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\Swagger.xml

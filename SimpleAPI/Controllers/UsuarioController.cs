@@ -17,7 +17,11 @@ namespace SimpleAPI.Controllers
     {
         private MeuContext db = new MeuContext();
 
-        // GET api/Usuario
+        /// <summary>
+        /// Lista os itens da To-do list.
+        /// </summary>
+        /// <returns>Os itens da To-do list</returns>
+        /// <response code="200">Returna os itens da To-do list cadastrados</response>
         public IEnumerable<Usuario> GetUsuarios()
         {
             return db.Usuarios.AsEnumerable();
