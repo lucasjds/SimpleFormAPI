@@ -29,7 +29,7 @@ namespace SimpleAPI.Controllers
         {
             Usuario usuario = db.Usuarios.Find(id);
             if (usuario == null)
-                return NotFound();
+                return BadRequest(Validacoes.UserNotExist);
             return Ok(usuario);
         }
 
@@ -44,6 +44,8 @@ namespace SimpleAPI.Controllers
                 return BadRequest(Validacoes.CPFNotValid);
             if (!Validacoes.IsPasswordValid(usuario.password))
                 return BadRequest(Validacoes.PasswordNotValid);
+            if (!UsuarioExists(id))
+                return BadRequest(Validacoes.UserNotExist);
 
             db.Entry(usuario).State = EntityState.Modified;
 
@@ -51,15 +53,12 @@ namespace SimpleAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch 
             {
-                if (!UsuarioExists(id))
-                    return NotFound();
-                else
-                    throw;
+                throw;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
         }
 
         // POST api/Usuario
@@ -74,9 +73,18 @@ namespace SimpleAPI.Controllers
                 return BadRequest(Validacoes.CPFNotValid); 
             if (!Validacoes.IsPasswordValid(usuario.password))
                 return BadRequest(Validacoes.PasswordNotValid);
-            db.Usuarios.Add(usuario);
-            db.SaveChanges();
+            try
+            {
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+
             return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
+           
         }
 
         // DELETE api/Usuario/5
@@ -85,18 +93,11 @@ namespace SimpleAPI.Controllers
         {
             Usuario usuario = db.Usuarios.Find(id);
             if (usuario == null)
-                return NotFound();
+                return BadRequest(Validacoes.UserNotExist);
             db.Usuarios.Remove(usuario);
             db.SaveChanges();
 
             return Ok(usuario);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                db.Dispose();
-            base.Dispose(disposing);
         }
 
         private bool UsuarioExists(int id)

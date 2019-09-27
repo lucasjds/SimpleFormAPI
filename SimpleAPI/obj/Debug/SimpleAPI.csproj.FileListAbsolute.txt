@@ -38,3 +38,11 @@ C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\obj\Debug\Si
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\EntityFramework.SqlServer.dll
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\EntityFramework.SqlServer.xml
 C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\MySql.Data.Entity.EF6.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\SimpleAPI.Utils.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\SimpleAPI.Utils.pdb
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\Swashbuckle.Core.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\WebActivatorEx.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\Swashbuckle.WebHost.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Cors.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Http.Cors.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI\bin\System.Web.Http.Cors.xml

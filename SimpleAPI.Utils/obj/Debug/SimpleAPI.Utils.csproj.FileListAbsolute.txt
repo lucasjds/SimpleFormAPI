@@ -1,0 +1,5 @@
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI.Utils\bin\Debug\SimpleAPI.Utils.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI.Utils\bin\Debug\SimpleAPI.Utils.pdb
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI.Utils\obj\Debug\SimpleAPI.Utils.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI.Utils\obj\Debug\SimpleAPI.Utils.dll
+C:\Users\Lucas\Documents\projects\simpleapi\SimpleFormAPI\SimpleAPI.Utils\obj\Debug\SimpleAPI.Utils.pdb

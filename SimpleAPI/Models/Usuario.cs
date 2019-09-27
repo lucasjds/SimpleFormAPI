@@ -20,5 +20,7 @@ namespace SimpleAPI.Models
         public string Emailaddress { get; set; }
         [Column( "datanascimento")]
         public string Datanascimento { get; set; }
+        [Column("password")]
+        public string password { get; set; }
     }
 }
