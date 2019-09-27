@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SimpleAPI.Models;
+using SimpleAPI.Utils;
 
 namespace SimpleAPI.Controllers
 {
@@ -43,7 +44,7 @@ namespace SimpleAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.Id)
+            if (id != usuario.Id || !Validacoes.IsValidEmail(usuario.Emailaddress))
             {
                 return BadRequest();
             }
@@ -73,9 +74,19 @@ namespace SimpleAPI.Controllers
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult PostUsuario(Usuario usuario)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid )
             {
                 return BadRequest(ModelState);
+            }
+
+            if (!Validacoes.IsValidEmail(usuario.Emailaddress))
+            {
+                return BadRequest("Email is invalid"); 
+            }
+
+            if ((!Validacoes.IsValidCPF(usuario.Cpf)))
+            {
+                return BadRequest("CPF is invalid"); 
             }
 
             db.Usuarios.Add(usuario);
