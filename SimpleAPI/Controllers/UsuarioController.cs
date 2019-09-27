@@ -18,16 +18,20 @@ namespace SimpleAPI.Controllers
         private MeuContext db = new MeuContext();
 
         /// <summary>
-        /// Lista os itens da To-do list.
+        /// Lista de Usuarios
         /// </summary>
-        /// <returns>Os itens da To-do list</returns>
-        /// <response code="200">Returna os itens da To-do list cadastrados</response>
+        /// <returns>Retorna todos os Usuarios</returns>
+        /// <response code="200">Retorna usuarios cadastrados</response>
         public IEnumerable<Usuario> GetUsuarios()
         {
             return db.Usuarios.AsEnumerable();
         }
 
-        // GET api/Usuario/5
+        /// <summary>
+        /// Busca Usuario por ID
+        /// </summary>
+        /// <returns>Retorna usuario</returns>
+        /// <response code="200">Retorna usuarios cadastrados</response>
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult GetUsuario(int id)
         {
@@ -37,7 +41,11 @@ namespace SimpleAPI.Controllers
             return Ok(usuario);
         }
 
-        // PUT api/Usuario/5
+        /// <summary>
+        /// Atualizar Usuario
+        /// </summary>
+        /// <returns>Retorna usuario atualizado</returns>
+        /// <response code="200">Retorna usuario atualizado</response>
         public IHttpActionResult PutUsuario(int id, Usuario usuario)
         {
             if (!ModelState.IsValid)
@@ -65,7 +73,11 @@ namespace SimpleAPI.Controllers
             return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
         }
 
-        // POST api/Usuario
+        /// <summary>
+        /// Criar Usuario
+        /// </summary>
+        /// <returns>Retorna usuario criado</returns>
+        /// <response code="200">Retorna usuario criado</response>
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult PostUsuario(Usuario usuario)
         {
@@ -91,7 +103,11 @@ namespace SimpleAPI.Controllers
            
         }
 
-        // DELETE api/Usuario/5
+        /// <summary>
+        /// Deletar Usuario
+        /// </summary>
+        /// <returns>Retorna usuario deletado</returns>
+        /// <response code="200">Retorna usuario deletado</response>
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult DeleteUsuario(int id)
         {
