@@ -10,6 +10,7 @@ namespace SimpleAPI.Utils
     public static class Validacoes
     {
         public static string UserNotExist = "Usuario does not exist.";
+        public static string DateNotValid = "Birthdate is invalid";
         public static string EmailNotValid = "Email is invalid";
         public static string CPFNotValid = "CPF is invalid";
         public static string PasswordNotValid = "Password is invalid! Should have one special character and one uppercase one number and be less than 10 and greater than 4 character ";
@@ -73,6 +74,16 @@ namespace SimpleAPI.Utils
                 !hasSymbols.IsMatch(password))
                 return false;
             return true;
+        }
+
+        public static bool IsDateValid(string date)
+        {
+            DateTime temp;
+            if (DateTime.TryParse(date, out temp))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

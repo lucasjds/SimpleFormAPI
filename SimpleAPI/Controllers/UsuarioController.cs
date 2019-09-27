@@ -58,11 +58,12 @@ namespace SimpleAPI.Controllers
                 return BadRequest(Validacoes.PasswordNotValid);
             if (!UsuarioExists(id))
                 return BadRequest(Validacoes.UserNotExist);
-
-            db.Entry(usuario).State = EntityState.Modified;
+            if (!Validacoes.IsDateValid(usuario.Datanascimento))
+                return BadRequest(Validacoes.DateNotValid);
 
             try
             {
+                db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch 
@@ -89,6 +90,9 @@ namespace SimpleAPI.Controllers
                 return BadRequest(Validacoes.CPFNotValid); 
             if (!Validacoes.IsPasswordValid(usuario.password))
                 return BadRequest(Validacoes.PasswordNotValid);
+            if (!Validacoes.IsDateValid(usuario.Datanascimento))
+                return BadRequest(Validacoes.DateNotValid);
+            
             try
             {
                 db.Usuarios.Add(usuario);
